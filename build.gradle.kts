@@ -6,6 +6,8 @@ plugins {
 	kotlin("jvm") version "1.9.23"
 	kotlin("plugin.spring") version "1.9.23"
 	kotlin("plugin.jpa") version "1.9.23"
+	id("org.sonarqube") version "6.0.1.5171"
+	id("jacoco")
 }
 
 group = "br.group.twenty.challenge"
@@ -48,6 +50,19 @@ dependencies {
 	//Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
+
+sonarqube {
+	properties {
+		property("sonar.projectKey", "product-service")
+		property("sonar.host.url", "http://localhost:9000") // URL do seu servidor SonarQube
+		property("sonar.login", "sqp_ac45df787d4d12564ff5030298f98d449d22848c") // Token gerado no SonarQube
+		property("sonar.kotlin.language.level", "1.9") // Versão do Kotlin
+		property("sonar.sources", "src/main/kotlin") // Diretório de fontes
+		property("sonar.tests", "src/test/kotlin") // Diretório de testes
+		property("sonar.junit.reportsPath", "~/customer-service/build/test-logs") // Caminho dos relatórios de teste
+	}
+}
+
 
 tasks.withType<KotlinCompile> {
 	kotlinOptions {

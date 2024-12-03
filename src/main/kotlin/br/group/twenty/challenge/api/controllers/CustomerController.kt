@@ -16,7 +16,7 @@ class CustomerController(
 ) {
 
     @PostMapping
-    fun create(@RequestBody createCustomer: CreateCustomer): ResponseEntity<Customer> {
+    fun create(@RequestBody createCustomer: CreateCustomer): ResponseEntity<Any> {
         return ResponseEntity.status(HttpStatus.CREATED)
             .body(createCustomerUseCase.execute(createCustomer))
     }

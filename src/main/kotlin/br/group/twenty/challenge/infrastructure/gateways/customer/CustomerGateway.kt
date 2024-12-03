@@ -3,7 +3,6 @@ package br.group.twenty.challenge.infrastructure.gateways.customer
 import br.group.twenty.challenge.core.entities.customer.CreateCustomer
 import br.group.twenty.challenge.core.entities.customer.Customer
 import br.group.twenty.challenge.core.entities.mapper.CustomerMapper.toDto
-import br.group.twenty.challenge.core.exceptions.ResourceNotFoundException
 import br.group.twenty.challenge.core.gateways.ICustomerGateway
 import br.group.twenty.challenge.infrastructure.exceptions.ResourceInternalServerException
 import br.group.twenty.challenge.infrastructure.persistence.entities.CustomerEntity
@@ -37,5 +36,7 @@ class CustomerGateway(private val dataSource: ICustomerDataSource) : ICustomerGa
             throw ResourceInternalServerException("Failed to find customer $cpf.", ex)
         }
     }
+
+
 
 }
